@@ -4,13 +4,19 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "sourceMap": true,
     "baseUrl": "./",
     "strict": true,
+    "paths": {
+      "@/*": ["src/*"],
+    },
     "allowSyntheticDefaultImports": true,
-    "skipDefaultLibCheck": true
-  }
+    "skipLibCheck": true
+  },
+  "references": [
+    { "path": "./tsconfig.node.json" }
+  ]
 }

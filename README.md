@@ -1,62 +1,67 @@
-# electron-vite-boilerplate
+# electron-vite-vue
 
-A Electron + Vite boilerplate of the nature of learning.
+🥳 Really simple `Electron` + `Vue` + `Vite` boilerplate.
 
-*学习性的 Electron + Vite 样板工程!*
+[![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ae3863e3-1aec-4eb1-8f9f-1890af56929d/deploy-status)](https://app.netlify.com/sites/electron-vite/deploys)
+![GitHub license](https://img.shields.io/github/license/caoxiemeihao/electron-vite-vue?style=flat)
+![GitHub stars](https://img.shields.io/github/stars/caoxiemeihao/electron-vite-vue?color=fa6470&style=flat)
+![GitHub forks](https://img.shields.io/github/forks/caoxiemeihao/electron-vite-vue?style=flat)
 
-[![awesome-vite](https://awesome.re/badge.svg)](https://github.com/vitejs/awesome-vite)
-[![Required Node.JS >= v14.17.0](https://img.shields.io/static/v1?label=node&message=%3E=14.17.0&logo=node.js&color=3f893e)](https://nodejs.org/about/releases)
-[![GitHub license](https://img.shields.io/github/license/caoxiemeihao/electron-vite-boilerplate)](https://github.com/electron-vite/electron-vite-boilerplate/blob/main/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/caoxiemeihao/electron-vite-boilerplate?color=fa6470)](https://github.com/electron-vite/electron-vite-boilerplate)
+English | [简体中文](README.zh-CN.md)
 
-- 📦 Out of the box  
-- 🚚 Include only necessary dependencies  
+## Features
 
-![screenshot](https://raw.githubusercontent.com/electron-vite/electron-vite-boilerplate/main/packages/renderer/public/screenshot-transparent.png)
+📦 Out of the box  
+🎯 Based on [vue-ts](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vue-ts) template, less invasive  
+🌱 Extensible, really simple directory structure  
+💪 Support using Node.js API in Renderer-process  
+🔩 Support C/C++ native addons  
+🖥 It's easy to implement multiple windows  
 
-## Run Setup
+## Quick Start
 
 ```sh
-# clone the project
-git clone https://github.com/electron-vite/electron-vite-boilerplate.git
-
-# enter the project directory
-cd electron-vite-boilerplate
-
-# install dependency
-npm install
-
-# develop
-npm run dev
+npm create electron-vite
 ```
+
+<!-- [![quick-start](https://asciinema.org/a/483731.svg)](https://asciinema.org/a/483731) -->
+
+![electron-vite-vue.gif](https://github.com/electron-vite/electron-vite-vue/blob/main/public/electron-vite-vue.gif?raw=true)
+
+## Debug
+
+![electron-vite-react-debug.gif](https://github.com/electron-vite/electron-vite-react/blob/main/public/electron-vite-react-debug.gif?raw=true)
 
 ## Directory
 
-Once `dev` or `build` npm-script executed will be generate named `dist` folder. It has children dir of same as `packages` folder, the purpose of this design can ensure the correct path calculation.
-
-*一旦 `dev` 或 `build` 命令执行过后，将会生成与 `packages` 相同结构 `dist` 文件夹，这样设计的目的是保障构建后路径计算的正确性。*
-
-```tree
-├── dist                      After build, it's generated according to the "packages" directory
-│   ├── main/
-│   ├── preload/
-│   └── renderer/
-│
-├── scripts
-│   ├── build.mjs             npm run build
-│   └── watch.mjs             npm run dev
-│
-└── packages
-    ├── main                  Main-process source code
-    │   └── vite.config.ts
-    ├── preload               Preload-scripts source code
-    │   └── vite.config.ts
-    └── renderer              Renderer-process source code
-        └── vite.config.ts
+```diff
++ ├─┬ electron
++ │ ├─┬ main
++ │ │ └── index.ts    entry of Electron-main
++ │ └─┬ preload
++ │   └── index.ts    entry of Electron-preload
+  ├─┬ src
+  │ └── main.ts       entry of Electron-renderer
+  ├── index.html
+  ├── package.json
+  └── vite.config.ts
 ```
 
-## FAQ
+## Examples
 
-- [dependencies vs devDependencies](https://github.com/electron-vite/vite-plugin-electron/tree/main/packages/electron-renderer#dependencies-vs-devdependencies)
-- [Using C/C++ native addons in Electron-Renderer](https://github.com/electron-vite/vite-plugin-electron/tree/main/packages/electron-renderer#load-nodejs-cc-native-modules)
-- [Node.js ESM packages](https://github.com/electron-vite/vite-plugin-electron/tree/main/packages/electron-renderer#nodejs-esm-packages) (e.g. `execa` `node-fetch`)
+Used in Main-process 👉 [electron-vite-boilerplate](https://github.com/caoxiemeihao/electron-vite-boilerplate)
+
+Used in Renderer-process 👉 [electron-vite-boilerplate/tree/nodeIntegration](https://github.com/caoxiemeihao/electron-vite-boilerplate/tree/nodeIntegration)
+
+> List the modules you may use as far as possible
+###### ES Modules
+
+- [execa](https://www.npmjs.com/package/execa)
+- [node-fetch](https://www.npmjs.com/package/node-fetch)
+- [file-type](https://www.npmjs.com/package/file-type)
+
+###### Native Addons(C/C++)
+
+- [sqlite3](https://www.npmjs.com/package/sqlite3)
+- [serialport](https://www.npmjs.com/package/serialport)
